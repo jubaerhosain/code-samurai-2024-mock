@@ -1,6 +1,6 @@
 "use strict";
 
-import { Sequelize, Op, DataTypes } from "sequelize";
+import { DataTypes, Op, Sequelize } from "sequelize";
 import config from "./config.js";
 
 const sequelize = new Sequelize(config.mysql.database, config.mysql.username, config.mysql.password, {
@@ -15,10 +15,12 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     logging: false,
 });
 
+import Book from "../models/Book.js";
 import Post from "../models/Post.js";
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
     Post: Post(options),
+    Book: Book(options),
 };
 
 // initialize associations
@@ -59,4 +61,5 @@ export function initializeMySqlConnection() {
 // dropAllTable();
 // initializeMySqlConnection();
 
-export { Op, Sequelize, sequelize, models };
+export { Op, Sequelize, models, sequelize };
+
