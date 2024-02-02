@@ -46,7 +46,7 @@ export function initializeMySqlConnection() {
                 console.log("Database is not ready till now. Connecting...");
                 console.log("Unable to connect to the database:", err.message);
             });
-        if(count > 5) {
+        if(count > 10) {
             console.log("Database connection failed");
         }
     }, 5000);
