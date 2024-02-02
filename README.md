@@ -21,3 +21,7 @@
 - **Name**: Istiaq Ahmed Fahad
 - **Email 1**: bsse1204@iit.du.ac.bd
 - **Email 2**: ahmedfahad3596@gmail.com
+
+## How to run
+ - **Command**: `docker-compose up`
+ - **Run above command again** if any error occur related to database connectivity issues. Because database container takes time to be ready, and an error may will be thrown from application server informing that unable to connect to the database.
