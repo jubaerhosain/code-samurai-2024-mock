@@ -22,10 +22,7 @@
 - **Email 1**: bsse1204@iit.du.ac.bd
 - **Email 2**: ahmedfahad3596@gmail.com
 
-# Execution Instruction
+## How to run
 
-Simply run the following command:
-
-`docker-compose up --build`
-
-_in case it failed to run please **re-run** this command or run `docker-compose down; docker-compose up--build`. Sometimes it takes a while to connect the MySQL DB._
+- **Command**: `docker-compose up --build`
+- **Run above command again** if any error occur related to database connectivity issues. Because database container takes time to be ready, and an error may will be thrown from application server informing that unable to connect to the database.
