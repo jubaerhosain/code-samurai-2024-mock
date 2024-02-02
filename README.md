@@ -14,7 +14,7 @@
 
 - **Name**: Sharif Mohammad Abdullah
 - **Email 1**: bsse1211@iit.du.ac.bd
-- **Email 2**: 
+- **Email 2**: sharif3abdullah@gmail.com
 
 ### Member 3:
 
