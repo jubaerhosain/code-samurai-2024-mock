@@ -47,7 +47,7 @@ export function initializeMySqlConnection() {
         if (count > 30) {
             console.error("Database connection failed");
         }
-    }, 1000);
+    }, 3000);
 }
 
 function dropAllTable() {
