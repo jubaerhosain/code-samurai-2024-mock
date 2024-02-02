@@ -24,4 +24,4 @@ services:
         #     - database-store:/var/lib/mysql
 
 volumes:
-    database-store:
+  database-store:
