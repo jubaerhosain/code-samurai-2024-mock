@@ -1,0 +1,9 @@
+test-credentials.txt
+node_modules/
+.vscode
+public/
+test/
+temp/
+logs/
+.env
+api-doc
