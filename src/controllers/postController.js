@@ -1,7 +1,8 @@
-import { Joi } from "../utils/Joi.js";
 import { models } from "../configs/mysql.js";
+import { Joi } from "../utils/Joi.js";
 
 async function createPost(req, res) {
+    
     const postDto = req.body;
     const schema = Joi.object({
         title: Joi.string().trim().required(),
@@ -17,4 +18,13 @@ async function createPost(req, res) {
     res.status(201).json(post);
 }
 
-export default { createPost };
+async function getPost(req, res) {
+
+    const postID = req.params.id;
+    
+    const fetchedPost = await models.Post.findByPk(postID);
+
+    res.status(200).json(fetchedPost);
+}
+
+export default { createPost, getPost };

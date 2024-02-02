@@ -1,7 +1,8 @@
 "use strict";
 
 export default (options) => {
-    const { sequelize, DataTypes, Sequelize } = options;
+    const { sequelize, DataTypes } = options;
+
     const Post = sequelize.define("Posts", {
         id: {
             type: DataTypes.INTEGER,
