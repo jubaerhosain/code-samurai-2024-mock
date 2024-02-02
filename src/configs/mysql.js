@@ -43,11 +43,11 @@ export function initializeMySqlConnection() {
                 clearInterval(interval);
             })
             .catch((err) => {
-                console.log("Database is not ready till now. Connecting...");
-                console.log("Unable to connect to the database:", err.message);
+                console.log("Database is not ready till now. Wait a while. Connecting to the database...");
+                console.error(err.message);
             });
-        if(count > 10) {
-            console.log("Database connection failed");
+        if (count > 10) {
+            console.error("Database connection failed");
         }
     }, 5000);
 }
