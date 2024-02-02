@@ -15,10 +15,10 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     logging: false,
 });
 
-import Post from "../models/Post.js";
+import Book from "../models/Book.js";
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
-    Post: Post(options),
+    Book: Book(options),
 };
 
 // initialize associations
@@ -27,8 +27,6 @@ Object.entries(models).forEach(([name, model]) => {
         model.associate(models);
     }
 });
-
-console.log("Number of table: ", Object.keys(models).length);
 
 // Test the connection
 export function initializeMySqlConnection() {
@@ -46,15 +44,15 @@ export function initializeMySqlConnection() {
                 console.log("Database is not ready till now. Wait a while. Connecting to the database...");
                 console.error(err.message);
             });
-        if (count > 10) {
+        if (count > 30) {
             console.error("Database connection failed");
         }
-    }, 5000);
+    }, 1000);
 }
 
-// function dropAllTable() {
-//     sequelize.drop({ force: true });
-// }
+function dropAllTable() {
+    sequelize.drop({ force: true });
+}
 
 // dropAllTable();
 // initializeMySqlConnection();
