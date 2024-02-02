@@ -1,8 +1,7 @@
 import { models } from "../configs/mysql.js";
 import { Joi } from "../utils/Joi.js";
 
-async function addBook(req, res) {
-
+async function createBook(req, res) {
     const bookDto = req.body;
     const bookSchema = Joi.object({
         id: Joi.number().integer().optional(),
@@ -15,27 +14,86 @@ async function addBook(req, res) {
     const { error } = bookSchema.validate(bookDto);
     if (error) return res.status(400).json(error.details);
 
-    // check if id is already exists
+    if (bookDto.id) {
+        const existed = await models.Book.findByPk(bookDto.id);
+        if (existed) return res.status(409).json({ message: `book with id: ${bookDto.id} already exists` });
+    }
 
     const post = await models.Book.create(bookDto);
 
     res.status(201).json(post);
 }
 
-async function getParticularBook(req, res) {
+async function updateBook(req, res) {
+    const id = req.params.id;
 
-    const bookID = req.params.id;
-    
-    const fetchedBook = await models.Book.findByPk(bookID);
+    const book = await models.Book.findByPk(id, { raw: true });
 
-    if(fetchedBook == null) {
-        res.status(404).json({
-            message: `book with id: ${bookID} was not found`
-        })
+    if (!book) {
+        return res.status(404).json({ message: `book with id: ${id} was not found` });
     }
 
-    res.status(200).json(fetchedBook);
+    const bookDto = req.body;
+    book.title = bookDto.title ?? book.title;
+    book.author = bookDto.author ?? book.author;
+    book.genre = bookDto.genre ?? book.genre;
+    book.price = bookDto.price ?? book.price;
+
+    // const bookSchema = Joi.object({
+    //     title: Joi.string().optional(),
+    //     author: Joi.string().optional(),
+    //     genre: Joi.string().optional(),
+    //     price: Joi.number().optional(),
+    // });
+
+    // const { error } = bookSchema.validate(bookDto);
+    // if (error) return res.status(400).json(error.details);
+
+    await models.Book.update(book, {
+        where: { id: id },
+        returning: true,
+    });
+
+    res.status(200).json(book);
 }
 
-export default { addBook, getParticularBook };
+async function findOneBook(req, res) {
+    const id = req.params.id;
 
+    const book = await models.Book.findByPk(id);
+
+    if (!book) {
+        return res.status(404).json({ message: `book with id: ${id} was not found` });
+    }
+
+    res.status(200).json(book);
+}
+
+async function findAllBook(req, res) {
+    const { title, author, genre, sort = "id", order = "ASC" } = req.query;
+
+    const searchConditions = {};
+    if (title) {
+        searchConditions.title = title;
+    }
+    if (author) {
+        searchConditions.author = author;
+    }
+    if (genre) {
+        searchConditions.genre = genre;
+    }
+
+    const sortOrder = order.toUpperCase() === "DESC" ? "DESC" : "ASC";
+
+    const books = await models.Book.findAll({
+        where: searchConditions,
+        order: [
+            [sort, sortOrder],
+            ["id", "ASC"], // Secondary sort criterion
+        ],
+    });
+
+    res.status(200).json({ books });
+}
+
+export default { createBook, updateBook, findAllBook, findOneBook };

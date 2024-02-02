@@ -21,3 +21,11 @@
 - **Name**: Istiaq Ahmed Fahad
 - **Email 1**: bsse1204@iit.du.ac.bd
 - **Email 2**: ahmedfahad3596@gmail.com
+
+# Execution Instruction
+
+Simply run the following command:
+
+`docker-compose up --build`
+
+_in case it failed to run please **re-run** this command or run `docker-compose down; docker-compose up--build`. Sometimes it takes a while to connect the MySQL DB._

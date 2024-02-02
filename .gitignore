@@ -5,5 +5,4 @@ public/
 test/
 temp/
 logs/
-.env
 api-doc
