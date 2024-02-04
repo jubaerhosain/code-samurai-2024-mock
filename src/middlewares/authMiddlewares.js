@@ -8,10 +8,6 @@ export async function checkAuthentication(req, res, next) {
         
         const token = signedCookie || authToken;
 
-        if (!token) {
-            return res.status(401).json({ message: "No auth token is provided" });
-        }
-
         const decodedToken = utils.verifyJwtToken(token);
 
         if (!decodedToken) {

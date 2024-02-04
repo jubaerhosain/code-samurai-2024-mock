@@ -29,7 +29,8 @@ export default (options) => {
             },
         },
         {
-            timestamps: false, // Disable createdAt and updatedAt
+            // Disable createdAt and updatedAt
+            timestamps: false, 
         }
     );
 

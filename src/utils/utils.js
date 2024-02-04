@@ -32,6 +32,7 @@ function verifyJwtToken(token) {
         const decoded = jwt.verify(token, config.jwt.secret);
         return decoded;
     } catch (err) {
+        // console.log(err.message);
         return false;
     }
 }
