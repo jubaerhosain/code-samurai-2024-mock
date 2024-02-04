@@ -1,5 +1,7 @@
 import express from "express";
 import "express-async-errors";
+import cookieParser from "cookie-parser";
+
 
 import bookRoutes from "./src/routes/bookRoutes.js";
 import { globalErrorHandler } from "./src/middlewares/globalErrorHandler.js";
@@ -12,6 +14,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser(config.cookie.secret));
+
 
 app.use("/api", bookRoutes);
 
