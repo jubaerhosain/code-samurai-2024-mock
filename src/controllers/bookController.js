@@ -89,7 +89,7 @@ async function findAllBook(req, res) {
         where: searchConditions,
         order: [
             [sort, sortOrder],
-            ["id", "ASC"], // Secondary sort criterion
+            ["id", "ASC"], 
         ],
     });
 
