@@ -9,7 +9,7 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     define: {
         freezeTableName: true,
         defaultScope: {
-            attributes: { exclude: ["createdAt", "updatedAt", "password"] },
+            attributes: { exclude: ["createdAt", "updatedAt"] },
         },
     },
     logging: false,
@@ -41,8 +41,8 @@ export function initializeMySqlConnection() {
             .then(() => {
                 console.log("MySql connection has been established successfully");
                 {
-                    // sequelize.sync();
-                    // console.log("Sequelize synced with database");
+                    sequelize.sync();
+                    console.log("Sequelize synced with database");
                 }
                 clearInterval(interval);
             })

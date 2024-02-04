@@ -25,9 +25,9 @@ async function login(req, res, next) {
     }
 
     const isVerified = await utils.verifyPassword(loginDto.password, user.password);
-    if (isVerified) {
+    if (!isVerified) {
         return res.status(401).json({
-            message: "Invalid email or password",
+            message: "invalid email or password",
         });
     }
 
@@ -52,7 +52,7 @@ async function login(req, res, next) {
 
 async function logout(req, res, next) {
     res.clearCookie(config.cookie.authCookieName);
-    res.json({ message: "Logged out successfully" });
+    res.json({ message: "logged out successfully" });
 }
 
 async function signup(req, res, next) {
