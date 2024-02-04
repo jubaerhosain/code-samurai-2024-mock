@@ -17,8 +17,8 @@ services:
             - AUTH_COOKIE_NAME=name
         depends_on:
             - database-server
-        volumes:
-            - .:/app
+        # volumes:
+        #     - .:/app
 
     database-server:
         image: mysql:latest
