@@ -9,5 +9,9 @@ export default {
         password: process.env.MYSQL_PASSWORD,
         host: process.env.MYSQL_HOST,
         dialect: "mysql",
-    }
+    },
+    jwt: {
+        expiry: process.env.JWT_EXPIRY,
+        secret: process.env.JWT_SECRET,
+    },
 };
