@@ -7,7 +7,8 @@ import { notFoundHandler } from "./src/middlewares/notFoundHandler.js";
 import { initializeMySqlConnection } from "./src/configs/mysql.js";
 
 import config from "./src/configs/config.js";
-import mainRoutes from "./src/routes/mainRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
+import bookRoutes from "./src/routes/bookRoutes.js";
 
 const app = express();
 
@@ -16,7 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser(config.cookie.secret));
 
-app.use("/api", mainRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/books", bookRoutes);
 
 app.use(notFoundHandler);
 

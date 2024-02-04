@@ -16,9 +16,12 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
 });
 
 import Book from "../models/Book.js";
+import User from "../models/User.js";
+
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
     Book: Book(options),
+    User: User(options),
 };
 
 // initialize associations
@@ -36,13 +39,18 @@ export function initializeMySqlConnection() {
         sequelize
             .authenticate()
             .then(() => {
-                console.log("MySql connection has been established successfully...");
-                sequelize.sync();
+                console.log("MySql connection has been established successfully");
+                {
+                    // sequelize.sync();
+                    // console.log("Sequelize synced with database");
+                }
                 clearInterval(interval);
             })
             .catch((err) => {
-                console.log("Database is not ready till now. Wait a while. Connecting to the database...");
+                console.log("\n\n\n");
                 console.error(err.message);
+                console.log("Database is not ready till now. Wait a while. \nConnecting to the database...");
+                console.log("\n\n\n");
             });
         if (count > 30) {
             console.error("Database connection failed");
