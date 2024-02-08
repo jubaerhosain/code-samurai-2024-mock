@@ -47,10 +47,8 @@ export function initializeMySqlConnection() {
                 clearInterval(interval);
             })
             .catch((err) => {
-                console.log("\n\n\n");
-                console.error(err.message);
-                console.log("Database is not ready till now. Wait a while. \nConnecting to the database...");
-                console.log("\n\n\n");
+                console.log("\n");
+                console.error(err.message + ",", "Trying again...");
             });
         if (count > 30) {
             console.error("Database connection failed");
