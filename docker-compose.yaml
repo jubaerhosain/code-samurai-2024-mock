@@ -26,8 +26,8 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: samurai
             MYSQL_DATABASE: code_samurai_2024
-        volumes:
-            - optimists-db-store:/var/lib/mysql
+        # volumes:
+        #     - optimists-db-store:/var/lib/mysql
 
-volumes:
-    optimists-db-store:
+# volumes:
+#     optimists-db-store:
