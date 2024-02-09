@@ -28,10 +28,10 @@ export default (options) => {
     );
 
     Train.associate = (models) => {
-        Train.belongsToMany(models.Station, {
-            through: models.Stop,
-            foreignKey: "train_id",
-        });
+        // Train.belongsToMany(models.Station, {
+        //     through: models.Stop,
+        //     foreignKey: "train_id",
+        // });
     };
 
     return Train;
