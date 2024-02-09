@@ -25,9 +25,32 @@ async function addStation(req, res) {
 }
 
 async function getAllStations(req, res) {
+    const stations = await models.Station.findAll({
+        order: [
+            ['station_id', 'ASC']
+        ]
+    });
+
+    res.status(200).json({ stations });
 }
 
 async function getAllTrains(req, res) {
+    const station_id = req.params.station_id;
+
+    console.log(station_id);
+
+   
+    const existed = await models.Station.findByPk(station_id);
+    if (!existed) return res.status(404).json({ message: `station with id: ${station_id} was not found` });
+
+    const trains = [];
+
+    res.status(200).json({
+        station_id,
+        trains
+    });
+    
+
 }
 
 export default { addStation, getAllStations, getAllTrains}
