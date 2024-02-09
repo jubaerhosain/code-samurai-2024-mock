@@ -2,24 +2,29 @@
 
 export default (options) => {
     const { sequelize, DataTypes } = options;
-    const User = sequelize.define(
-        "Users",
+    const Station = sequelize.define(
+        "Stations",
         {
-            user_id: {
+            station_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            user_name: {
+            station_name: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            balance: {
-                type: DataTypes.INTEGER,
+            longitude: {
+                type: DataTypes.FLOAT,
                 allowNull: false,
                 defaultValue: 0,
                 
+            },
+            latitude: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+                defaultValue: 0,
             }
         },
         {
@@ -27,7 +32,7 @@ export default (options) => {
         }
     );
 
-    User.associate = (models) => {};
+    Station.associate = (models) => {};
 
-    return User;
+    return Station;
 };

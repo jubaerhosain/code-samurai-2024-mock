@@ -2,32 +2,38 @@
 
 export default (options) => {
     const { sequelize, DataTypes } = options;
-    const User = sequelize.define(
-        "Users",
+    const Train = sequelize.define(
+        "Trains",
         {
-            user_id: {
+            train_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            user_name: {
+            train_name: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            balance: {
+            capacity: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 defaultValue: 0,
                 
-            }
+            },
         },
         {
             timestamps: false,
         }
     );
 
-    User.associate = (models) => {};
+    Train.associate = (models) => {
+        Train.hasMany(models.Stop, {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+            foreignKey: "train_id",
+        });
+    };
 
-    return User;
+    return Train;
 };
