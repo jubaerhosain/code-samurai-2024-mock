@@ -18,10 +18,10 @@ export default (options) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true,
-                // references: {
-                //     model: "Stations",
-                //     key: "station_id",
-                // },
+                references: {
+                    model: "Stations",
+                    key: "station_id",
+                },
             },
             arrival_time: {
                 type: DataTypes.STRING,

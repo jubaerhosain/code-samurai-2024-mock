@@ -28,9 +28,8 @@ export default (options) => {
     );
 
     Train.associate = (models) => {
-        Train.hasMany(models.Stop, {
-            onDelete: "CASCADE",
-            onUpdate: "CASCADE",
+        Train.belongsToMany(models.Station, {
+            through: models.Stop,
             foreignKey: "train_id",
         });
     };
