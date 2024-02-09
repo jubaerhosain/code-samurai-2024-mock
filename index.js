@@ -14,6 +14,7 @@ import ticketRoutes from "./src/routes/ticketRoutes.js";
 import trainRoutes from "./src/routes/trainRoutes.js";
 import userRoutes from "./src/routes/userRoutes.js";
 import walletRoutes from "./src/routes/walletRoutes.js";
+import planRoutes from './src/routes/planningRoutes.js';
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use("/api/stations", stationRoutes);
 app.use("/api/trains", trainRoutes);
 app.use("/api/wallets", walletRoutes);
 app.use("/api/tickets", ticketRoutes);
-app.use("/api/routes", ticketRoutes);
+app.use("/api/routes", planRoutes)
 
 app.use(notFoundHandler);
 
