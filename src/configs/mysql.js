@@ -19,6 +19,7 @@ import Station from "../models/Station.js";
 import User from "../models/User.js";
 import Train from "../models/Train.js";
 import Stop from "../models/Stop.js";
+import Ticket from "../models/Ticket.js";
 
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
@@ -26,6 +27,7 @@ const models = {
     Station: Station(options),
     Train: Train(options),
     Stop: Stop(options),
+    Ticket: Ticket(options)
 };
 
 // initialize associations

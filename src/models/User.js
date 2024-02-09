@@ -27,7 +27,11 @@ export default (options) => {
         }
     );
 
-    User.associate = (models) => {};
+    User.associate = (models) => {
+        User.hasMany(models.Ticket, {
+            foreignKey: "wallet_id",
+        });
+    };
 
     return User;
 };
