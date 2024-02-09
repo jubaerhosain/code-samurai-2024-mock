@@ -15,13 +15,19 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     logging: false,
 });
 
-import Book from "../models/Book.js";
+import Station from "../models/Station.js";
 import User from "../models/User.js";
+import Train from "../models/Train.js";
+import Stop from "../models/Stop.js";
+import Ticket from "../models/Ticket.js";
 
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
-    Book: Book(options),
     User: User(options),
+    Station: Station(options),
+    Train: Train(options),
+    Stop: Stop(options),
+    Ticket: Ticket(options)
 };
 
 // initialize associations

@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "0deb49af-5591-4611-b405-faf830389fe5",
+		"name": "Code Samurai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25545144",
+		"_collection_link": "https://www.postman.com/ayhay/workspace/personal-workspace/collection/25783571-0deb49af-5591-4611-b405-faf830389fe5?action=share&source=collection_link&creator=25545144"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/routes?from=1&to=5&optimize=cost",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"total_cost\": 101,\r\n\"total_time\": 85,\r\n\"stations\": [\r\n{\r\n\"station_id\": 1,\r\n\"train_id\": 3,\r\n\r\n\"departure_time\": \"11:00\",\r\n\"arrival_time\": null,\r\n},\r\n{\r\n\"station_id\": 3,\r\n\"train_id\": 2,\r\n\"departure_time\": \"12:00\",\r\n\"arrival_time\": \"11:55\"\r\n},\r\n{\r\n\"station_id\": 5,\r\n\"train_id\": null,\r\n\"departure_time\": null,\r\n\"arrival_time\": \"12:25\"\r\n}\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/routes?from=1&to=5&optimize=cost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"routes"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "1"
+						},
+						{
+							"key": "to",
+							"value": "5"
+						},
+						{
+							"key": "optimize",
+							"value": "cost"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"user_id\": 1, \r\n\"user_name\": \"Fahim\",\r\n\"balance\": 100 \r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/station",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"station_id\": 1,\r\n\"station_name\": \"Dhaka GPO\",\r\n\"longitude\": 90.399452,\r\n\"latitude\": 23.777176\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/station",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"station"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/tickets",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"wallet_id\": 3,\r\n\"time_after\": \"10:55\",\r\n\"station_from\": 1,\r\n\"station_to\": 5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/tickets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"wallet_id\": 3,\r\n\"time_after\": \"10:55\",\r\n\"station_from\": 1,\r\n\"station_to\": 5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/wallets/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"recharge\": 150\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/wallets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wallets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/wallets/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/wallets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wallets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/stations/1/trains",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/stations/1/trains",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stations",
+						"1",
+						"trains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/stations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/stations",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/trains",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"train_id\": 1,\r\n\"train_name\": \"Mahanagar 123\",\r\n\"capacity\": 200,\r\n\"stops\": [\r\n{\r\n\"station_id\": 1,\r\n\"arrival_time\": null,\r\n\"departure_time\": \"07:00\",\r\n\"fare\": 0\r\n},\r\n{\r\n\"station_id\": 3,\r\n\"arrival_time\": \"07:45\",\r\n\"departure_time\": \"07:50\",\r\n\"fare\": 20\r\n},\r\n{\r\n\"station_id\": 4,\r\n\"arrival_time\": \"08:30\",\r\n\"departure_time\": null,\r\n\"fare\": 30\r\n}\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/trains",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"trains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/stations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"station_id\": 1,\r\n\"station_name\": \"Dhaka GPO\",\r\n\"longitude\": 90.399452,\r\n\"latitude\": 23.777176\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/stations",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"stations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"user_id\": 1, \r\n\"user_name\": \"Fahim\",\r\n\"balance\": 100 \r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
