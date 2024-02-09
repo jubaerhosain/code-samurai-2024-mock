@@ -1,1 +1,1 @@
-caching, load balancing, rate limiting, nginx, api versioning, 
+caching, load balancing, rate limiting, nginx, api versioning, threading for heavy loading task, microservices,
