@@ -45,12 +45,9 @@ export function initializeMySqlConnection() {
         sequelize
             .authenticate()
             .then(() => {
-                console.log("MySql listening on port " + config.mysql.port);
-                {
-                    sequelize.sync();
-                    console.log("Sequelize synced with database");
-                }
                 clearInterval(interval);
+                console.log(`MySql connection has been established successfully.`);
+                sequelize.sync();
             })
             .catch((err) => {
                 console.log("\n");

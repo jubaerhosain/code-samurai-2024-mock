@@ -3,6 +3,7 @@ import express from "express";
 import "express-async-errors";
 
 import { initializeMySqlConnection } from "./src/configs/mysql.js";
+import { initializeRedisConnection } from "./src/configs/redis.js";
 import { globalErrorHandler } from "./src/middlewares/globalErrorHandler.js";
 import { notFoundHandler } from "./src/middlewares/notFoundHandler.js";
 
