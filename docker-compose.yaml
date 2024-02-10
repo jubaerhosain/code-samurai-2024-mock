@@ -3,35 +3,35 @@ version: "3"
 services:
     app-server:
         build: .
-        restart: always
         ports:
             - "8000:8000"
         environment:
-            - PORT=8000
-            - MYSQL_HOST=database-server
-            - MYSQL_PORT=3306
-            - MYSQL_USERNAME=root
-            - MYSQL_ROOT_PASSWORD=samurai
-            - MYSQL_DATABASE=code_samurai_2024
-            - REDIS_HOST=redis-server
-            - REDIS_PORT=6379
-            - JWT_EXPIRY=2629800000
-            - JWT_SECRET=f7a30d6b8e03626b78db0e6e958acf57
-            - COOKIE_SECRET=9c1a60e5b9fd0b9763c8df7a81e2e32d
-            - AUTH_COOKIE_NAME=access_token
+            - PORT
+            - MYSQL_HOST
+            - MYSQL_PORT
+            - MYSQL_USERNAME
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_DATABASE
+            - REDIS_HOST
+            - REDIS_PORT
+            - JWT_EXPIRY
+            - JWT_SECRET
+            - COOKIE_SECRET
+            - AUTH_COOKIE_NAME
         depends_on:
             - database-server
             - redis-server
+        restart: always
         volumes:
             - .:/app
 
     database-server:
         image: mysql:latest
         ports:
-            - "3306:3306" # never do in production
+            - "3306:3306" # Never export port outside in production. Here did for testing purposes.
         environment:
-            MYSQL_ROOT_PASSWORD: samurai
-            MYSQL_DATABASE: code_samurai_2024
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_DATABASE
         restart: always
         # volumes:
         #     - optimists-db-store:/var/lib/mysql
@@ -39,7 +39,7 @@ services:
     redis-server:
         image: redis:latest
         ports:
-            - "6380:6379" # never do in production
+            - "6380:6379" # Never export port outside in production. Here did for testing purposes.
         restart: always
         # volumes:
         #     - optimists-redis-store:/data
