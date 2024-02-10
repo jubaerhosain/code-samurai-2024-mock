@@ -19,7 +19,6 @@ export default (options) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 defaultValue: 0,
-                
             },
         },
         {
@@ -28,10 +27,10 @@ export default (options) => {
     );
 
     Train.associate = (models) => {
-        // Train.belongsToMany(models.Station, {
-        //     through: models.Stop,
-        //     foreignKey: "train_id",
-        // });
+        Train.hasMany(models.Stoppage, { 
+            foreignKey: 'train_id', 
+        });
+
     };
 
     return Train;

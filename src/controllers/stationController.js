@@ -40,7 +40,7 @@ async function getAllTrains(req, res) {
     const existed = await models.Station.findByPk(station_id);
     if (!existed) return res.status(404).json({ message: `station with id: ${station_id} was not found` });
 
-    const stopTrains = await models.Stop.findAll({
+    const stopTrains = await models.Stoppage.findAll({
         where: { station_id },
         order: [
             ['departure_time', 'ASC']

@@ -8,7 +8,6 @@ import { notFoundHandler } from "./src/middlewares/notFoundHandler.js";
 
 import config from "./src/configs/config.js";
 import authRoutes from "./src/routes/authRoutes.js";
-import bookRoutes from "./src/routes/bookRoutes.js";
 import stationRoutes from "./src/routes/stationRoutes.js";
 import ticketRoutes from "./src/routes/ticketRoutes.js";
 import trainRoutes from "./src/routes/trainRoutes.js";
@@ -24,9 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(config.cookie.secret));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/books", bookRoutes);
-
-// today
 app.use("/api/users", userRoutes);
 app.use("/api/stations", stationRoutes);
 app.use("/api/trains", trainRoutes);

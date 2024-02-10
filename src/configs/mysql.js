@@ -18,15 +18,15 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
 import Station from "../models/Station.js";
 import User from "../models/User.js";
 import Train from "../models/Train.js";
-import Stop from "../models/Stop.js";
 import Ticket from "../models/Ticket.js";
+import Stoppage from "../models/Stoppage.js";
 
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
     User: User(options),
     Station: Station(options),
     Train: Train(options),
-    Stop: Stop(options),
+    Stoppage: Stoppage(options),
     Ticket: Ticket(options)
 };
 
@@ -62,8 +62,11 @@ export function initializeMySqlConnection() {
     }, 3000);
 }
 
-function dropAllTable() {
-    sequelize.drop({ force: true });
+async function dropAllTable() {
+    console.log("Dropping all table...");
+    sequelize.drop({ force: true }).then(() => {
+        console.log("Dropped all table successfully");
+    });
 }
 
 // dropAllTable();

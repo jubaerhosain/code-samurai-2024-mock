@@ -54,7 +54,7 @@ async function addTrain(req, res) {
             stops[i].time_key = getTimeKey(stops[i].arrival_time, stops[i].departure_time)
         }
 
-        const createdStops = await models.Stop.bulkCreate(stops, { transaction });
+        const createdStops = await models.Stoppage.bulkCreate(stops, { transaction });
 
         await transaction.commit();
 

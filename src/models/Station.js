@@ -19,13 +19,12 @@ export default (options) => {
                 type: DataTypes.FLOAT,
                 allowNull: false,
                 defaultValue: 0,
-                
             },
             latitude: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
                 defaultValue: 0,
-            }
+            },
         },
         {
             timestamps: false,
@@ -33,10 +32,9 @@ export default (options) => {
     );
 
     Station.associate = (models) => {
-        // Station.belongsToMany(models.Train, {
-        //     through: models.Stop,
-        //     foreignKey: "station_id",
-        // });
+        Station.hasMany(models.Stoppage, {
+            foreignKey: "station_id",
+        });
     };
 
     return Station;
