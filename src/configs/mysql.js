@@ -27,7 +27,7 @@ const models = {
     Station: Station(options),
     Train: Train(options),
     Stoppage: Stoppage(options),
-    Ticket: Ticket(options)
+    Ticket: Ticket(options),
 };
 
 // initialize associations

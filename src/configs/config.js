@@ -4,11 +4,11 @@ dotenv.config();
 export default {
     port: process.env.PORT,
     mysql: {
-        database: process.env.MYSQL_DB_NAME,
-        username: process.env.MYSQL_USERNAME,
-        password: process.env.MYSQL_PASSWORD,
-        host: process.env.MYSQL_HOST,
         dialect: "mysql",
+        host: process.env.MYSQL_HOST,
+        username: process.env.MYSQL_USERNAME,
+        password: process.env.MYSQL_ROOT_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
     },
     jwt: {
         expiry: process.env.JWT_EXPIRY,
@@ -18,4 +18,7 @@ export default {
         secret: process.env.COOKIE_SECRET,
         authCookieName: process.env.AUTH_COOKIE_NAME,
     },
+    redis: {
+        host: process.env.REDIS_HOST,
+    }
 };
