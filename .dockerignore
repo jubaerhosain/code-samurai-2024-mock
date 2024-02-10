@@ -7,4 +7,4 @@ Dockerfile
 .vscode
 *.md
 *.log
-.env
+# .env
