@@ -2,11 +2,11 @@ version: "3"
 
 services:
     app-server:
-        build: .
+        build: ./api-server
         ports:
             - "8000:8000"
         environment:
-            - PORT
+            - API_SERVER_PORT
             - MYSQL_HOST
             - MYSQL_PORT
             - MYSQL_USERNAME
@@ -24,7 +24,17 @@ services:
             - redis-server
         restart: always
         volumes:
-            - .:/app
+            - ./api-server:/app
+
+    email-server:
+        build: ./email-server
+        ports:
+            - "8001:8001"
+        environment:
+            - EMAIL_SERVER_PORT
+        restart: always
+        volumes:
+            - ./email-server:/app
 
     database-server:
         image: mysql:latest

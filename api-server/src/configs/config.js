@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default {
-    port: process.env.PORT,
+    port: process.env.API_SERVER_PORT,
     mysql: {
         dialect: "mysql",
         host: process.env.MYSQL_HOST,

@@ -54,7 +54,7 @@ app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
 app.listen(config.port, () => {
-    console.log(`Server listening on port ${config.port}...`);
+    console.log(`API Server listening on port ${config.port}...`);
     initializeMySqlConnection();
     initializeRedisConnection();
 });
