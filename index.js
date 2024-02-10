@@ -53,9 +53,8 @@ app.post("/api/uploads", upload.single("image"), async (req, res) => {
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
 
-initializeMySqlConnection();
-initializeRedisConnection();
-
 app.listen(config.port, () => {
     console.log(`Server listening on port ${config.port}...`);
+    initializeMySqlConnection();
+    initializeRedisConnection();
 });
