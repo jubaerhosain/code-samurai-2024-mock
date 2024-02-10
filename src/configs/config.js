@@ -6,6 +6,7 @@ export default {
     mysql: {
         dialect: "mysql",
         host: process.env.MYSQL_HOST,
+        port: process.env.MYSQL_PORT,
         username: process.env.MYSQL_USERNAME,
         password: process.env.MYSQL_ROOT_PASSWORD,
         database: process.env.MYSQL_DATABASE,
@@ -20,5 +21,6 @@ export default {
     },
     redis: {
         host: process.env.REDIS_HOST,
-    }
+        port: process.env.REDIS_PORT,
+    },
 };

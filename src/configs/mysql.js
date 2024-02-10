@@ -45,7 +45,7 @@ export function initializeMySqlConnection() {
         sequelize
             .authenticate()
             .then(() => {
-                console.log("MySql connection has been established successfully");
+                console.log("MySql listening on port " + config.mysql.port);
                 {
                     sequelize.sync();
                     console.log("Sequelize synced with database");
@@ -56,7 +56,7 @@ export function initializeMySqlConnection() {
                 console.log("\n");
                 console.error(err.message + ",", "Trying again...");
             });
-        if (count > 30) {
+        if (count > 10) {
             console.error("Database connection failed");
         }
     }, 3000);
