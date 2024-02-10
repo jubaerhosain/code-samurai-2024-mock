@@ -1,0 +1,1 @@
+// setup online object storage like "cloudinary"
