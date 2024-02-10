@@ -1,7 +1,7 @@
 import Redis from "ioredis";
 import config from "./config.js";
 
-export const redisClient = new Redis(6379, config.redis.host);
+export const redisClient = new Redis(config.redis.port, config.redis.host);
 
 export function initializeRedisConnection() {
     redisClient.on("error", (err) => {
@@ -17,18 +17,17 @@ export function initializeRedisConnection() {
     });
 
     // key name convention ${entity:id}
-    setTimeout(() => {
-        redisClient.set("user:1", JSON.stringify({ id: 1, name: "jubaer", email: "jubaer@gmail.com" }), (err, result) => {
-            if(err) console.log(err.message);
-        });
-    }, 2000);
+    // setTimeout(() => {
+    //     redisClient.set(
+    //         "user:1",
+    //         JSON.stringify({ id: 1, name: "jubaer hosain", email: "jubaer@gmail.com" }),
+    //         "EX",
+    //         10
+    //     );
+    // }, 1000);
 
-    setTimeout(async () => {
-        const res = await redisClient.get("user:1");
-        console.log(JSON.parse(res));
-    }, 3000);
-
-
+    // setTimeout(async () => {
+    //     const res = await redisClient.get("user:1");
+    //     console.log(JSON.parse(res));
+    // }, 3000);
 }
-
-export default redisClient;
