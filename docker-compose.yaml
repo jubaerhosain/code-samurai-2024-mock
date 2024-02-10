@@ -1,5 +1,7 @@
 version: "3"
 
+# use images while deploying
+
 services:
     app-server:
         build: ./api-server
