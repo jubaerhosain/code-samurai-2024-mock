@@ -36,8 +36,6 @@ app.use("/api/routes", planRoutes);
 
 // file uploading route
 app.post("/api/uploads", upload.single("image"), async (req, res) => {
-    console.log(req.file);
-
     try {
         const result = await cloudinaryClient.uploader.upload(req.file.path);
         res.json({
@@ -53,7 +51,6 @@ app.post("/api/uploads", upload.single("image"), async (req, res) => {
 });
 
 app.use(notFoundHandler);
-
 app.use(globalErrorHandler);
 
 initializeMySqlConnection();

@@ -1,1 +1,1 @@
-// messaging system
+// inter-service communication system
