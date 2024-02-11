@@ -9,6 +9,7 @@ app.listen(process.env.EMAIL_SERVER_PORT, async () => {
     console.log(`Email Server listening on port ${process.env.EMAIL_SERVER_PORT}...`);
 
     try {
+        // try connecting until rabbitmq is available
         const { connection, channel } = await getAmqpConnectionAndChannel();
         console.log("Connected to rabbitmq server");
 
@@ -19,9 +20,9 @@ app.listen(process.env.EMAIL_SERVER_PORT, async () => {
         channel.consume(queueName, async (message) => {
             const taskData = JSON.parse(message.content.toString()); // Parse JSON data
 
-            console.log("Received from rabbitmq", taskData);
+            console.log("Received from rabbitmq: ", taskData);
 
-            // channel.ack(message);
+            channel.ack(message);
         });
     } catch (error) {
         console.log(error);
