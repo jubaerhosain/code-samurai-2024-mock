@@ -24,6 +24,7 @@ services:
         depends_on:
             - database-server
             - redis-server
+            - rabbitmq-server
         restart: always
         volumes:
             - ./api-server:/app
@@ -34,6 +35,8 @@ services:
             - "8001:8001"
         environment:
             - EMAIL_SERVER_PORT
+        depends_on: 
+            - rabbitmq-server
         restart: always
         volumes:
             - ./email-server:/app
@@ -56,6 +59,20 @@ services:
         restart: always
         # volumes:
         #     - optimists-redis-store:/data
+
+    rabbitmq-server:
+        image: rabbitmq:management # Use the RabbitMQ image with management plugin
+        ports:
+        - "5672:5672" # RabbitMQ default port
+        - "15672:15672" # RabbitMQ management plugin port
+        # environment:
+        #     RABBITMQ_DEFAULT_USER: user # RabbitMQ default username
+        #     RABBITMQ_DEFAULT_PASS: password # RabbitMQ default password
+        restart: always
+        # volumes:
+        # - optimists-rabbitmq-store:/var/lib/rabbitmq
+
 # volumes:
 #     optimists-db-store:
 #     optimists-redis-store:
+#     optimists-rabbitmq-store:

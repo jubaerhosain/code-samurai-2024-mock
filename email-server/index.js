@@ -1,11 +1,30 @@
 import express from "express";
 import "express-async-errors"; // handles async errors
-import dotenv from "dotenv";
-dotenv.config();
+
+import { getAmqpConnectionAndChannel } from "./src/config/amqp.js";
 
 const app = express();
 
-
-app.listen(process.env.EMAIL_SERVER_PORT, () => {
+app.listen(process.env.EMAIL_SERVER_PORT, async () => {
     console.log(`Email Server listening on port ${process.env.EMAIL_SERVER_PORT}...`);
+
+    try {
+        const { connection, channel } = await getAmqpConnectionAndChannel();
+        console.log("Connected to rabbitmq server");
+
+        const queueName = "send-email";
+
+        await channel.assertQueue(queueName, { durable: true });
+
+        channel.consume(queueName, async (message) => {
+            const taskData = JSON.parse(message.content.toString()); // Parse JSON data
+
+            console.log("Received from rabbitmq", taskData);
+
+            // channel.ack(message);
+        });
+    } catch (error) {
+        console.log(error);
+        console.log(`Couldn't connect to rabbitmq`);
+    }
 });

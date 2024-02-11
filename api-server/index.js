@@ -17,6 +17,7 @@ import trainRoutes from "./src/routes/trainRoutes.js";
 import userRoutes from "./src/routes/userRoutes.js";
 import walletRoutes from "./src/routes/walletRoutes.js";
 import planRoutes from "./src/routes/planningRoutes.js";
+import emailRoutes from "./src/routes/emailRoutes.js";
 
 const app = express();
 
@@ -33,6 +34,9 @@ app.use("/api/trains", trainRoutes);
 app.use("/api/wallets", walletRoutes);
 app.use("/api/tickets", ticketRoutes);
 app.use("/api/routes", planRoutes);
+
+// for microservices
+app.use("/api/email", emailRoutes);
 
 // file uploading route
 app.post("/api/uploads", upload.single("image"), async (req, res) => {
