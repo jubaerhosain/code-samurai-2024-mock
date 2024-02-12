@@ -2,3 +2,4 @@ caching, load balancing, rate limiting, nginx, api versioning, threading for hea
 machine learning
 sequelize automatically handle connection pool,
 adding connection pool in rabbitmq/redis if needed.
+use mongodb atlas if mongodb is used.
