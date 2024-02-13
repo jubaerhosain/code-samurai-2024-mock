@@ -24,5 +24,4 @@ app.use(globalErrorHandler);
 app.listen(config.port, () => {
     console.log(`API Server listening on port ${config.port}...`);
     initializeMySqlConnection();
-    // initializeRedisConnection();
 });
