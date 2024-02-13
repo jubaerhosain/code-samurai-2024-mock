@@ -3,3 +3,5 @@ machine learning
 sequelize automatically handle connection pool,
 adding connection pool in rabbitmq/redis if needed.
 use mongodb atlas if mongodb is used for development.
+
+npm i node-cache for small/limited cache.
