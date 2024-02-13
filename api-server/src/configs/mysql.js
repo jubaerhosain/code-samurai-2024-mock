@@ -15,19 +15,11 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.username, co
     logging: false,
 });
 
-import Station from "../models/Station.js";
 import User from "../models/User.js";
-import Train from "../models/Train.js";
-import Ticket from "../models/Ticket.js";
-import Stoppage from "../models/Stoppage.js";
 
 const options = { sequelize, DataTypes, Sequelize, Op };
 const models = {
     User: User(options),
-    Station: Station(options),
-    Train: Train(options),
-    Stoppage: Stoppage(options),
-    Ticket: Ticket(options),
 };
 
 // initialize associations
@@ -53,7 +45,7 @@ export function initializeMySqlConnection() {
                 console.log("\n");
                 console.error(err.message + ",", "Trying again...");
             });
-        if (count > 10) {
+        if (count > 5) {
             console.error("Database connection failed");
         }
     }, 3000);

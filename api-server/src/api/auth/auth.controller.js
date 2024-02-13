@@ -1,7 +1,6 @@
-import config from "../configs/config.js";
-import { Joi, validateSchema } from "../utils/Joi.js";
-import { models } from "../configs/mysql.js";
-import utils from "../utils/utils.js";
+import config from "../../configs/config.js";
+import { models } from "../../configs/mysql.js";
+import utils from "../../utils/utils.js";
 
 async function login(req, res, next) {
     const loginDto = req.body;

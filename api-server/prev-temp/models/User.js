@@ -19,14 +19,19 @@ export default (options) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 defaultValue: 0,
-            },
+                
+            }
         },
         {
             timestamps: false,
         }
     );
 
-    User.associate = (models) => {};
+    User.associate = (models) => {
+        User.hasMany(models.Ticket, {
+            foreignKey: "wallet_id",
+        });
+    };
 
     return User;
 };
