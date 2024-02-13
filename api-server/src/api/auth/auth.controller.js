@@ -5,13 +5,6 @@ import utils from "../utils/utils.js";
 
 async function login(req, res, next) {
     const loginDto = req.body;
-    const loginSchema = Joi.object({
-        email: Joi.string().trim().email().required(),
-        password: Joi.string().trim().empty().required(),
-    }).required();
-
-    const validationError = validateSchema(loginSchema, loginDto);
-    if (validationError) return res.status(400).json(validationError);
 
     const user = await models.User.findOne({
         where: { email: loginDto.email },
@@ -57,15 +50,6 @@ async function logout(req, res, next) {
 
 async function signup(req, res, next) {
     const signUpDto = req.body;
-    const signUpSchema = Joi.object({
-        name: Joi.string().trim().required(),
-        email: Joi.string().trim().email().required(),
-        password: Joi.string().trim().required(),
-        // role: Joi.string().trim().required().valid("admin", "user"),
-    }).required();
-
-    const validationError = validateSchema(signUpSchema, signUpDto);
-    if (validationError) return res.status(400).json(validationError);
 
     const isUserExist = await models.User.findOne({
         where: { email: signUpDto.email },
